@@ -15,4 +15,5 @@ while true; do
 	 	 cat $i;
 		 rm $i
 	 done
+	 find /opt/logs/ -type d -mmin +15 -exec rm -r {} +
 done
