@@ -1,15 +1,5 @@
 version: '3'
 services:
-
-  #fluentbit:
-  #  image: fluent/fluent-bit:latest
-  #  container_name: fluent-bit
-  #  hostname: fluent-bit
-  #  volumes:
-  #    - /opt/logs:/logs:ro
-  #    - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
-  #  restart: unless-stopped
-
   looping:
     image: ubuntu:latest
     container_name: looping
@@ -23,5 +13,4 @@ services:
       - ./script.sh:/usr/local/script.sh
       - /opt/logs:/opt/logs:rw
     entrypoint: bash /usr/local/script.sh
-    #entrypoint: tail -f /etc/issue
 
