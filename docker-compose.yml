@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  #fluentbit:
+  #  image: fluent/fluent-bit:latest
+  #  container_name: fluent-bit
+  #  hostname: fluent-bit
+  #  volumes:
+  #    - /opt/logs:/logs:ro
+  #    - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
+  #  restart: unless-stopped
+
+  looping:
+    image: ubuntu:latest
+    container_name: looping
+    hostname: looping
+    build:
+      context: ./
+      dockerfile: looping-Dockerfile
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./script.sh:/usr/local/script.sh
+      - /opt/logs:/opt/logs:rw
+    entrypoint: bash /usr/local/script.sh
+    #entrypoint: tail -f /etc/issue
+
